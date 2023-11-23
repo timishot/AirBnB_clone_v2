@@ -33,7 +33,7 @@ class Test_PEP8(unittest.TestCase):
         self.assertEqual(result.total_errors, 0, "Foundcode style errors(and warnings)")
 
 
-class test_inhehit_basemodel(unittest.TestCase):
+class test_inherit_basemodel(unittest.TestCase):
     """Test if user inherit from BaseModel"""
     def test_instance(self):
         """Checkif user is an instance of BaseModel"""
