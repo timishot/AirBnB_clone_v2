@@ -4,7 +4,7 @@ from tests.test_models.test_base_model import test_basemodel
 from models.city import City
 import pycodestyle
 import unittest
-from models.base_model import BaseModel 
+from models.base_model import BaseModel
 
 
 class test_City(test_basemodel):
@@ -33,7 +33,9 @@ class Test_PEP8(unittest.TestCase):
         """Test pep8"""
         pep8style = pycodestyle.StyleGuide(quiet=True)
         result = pep8style.check_files(['models/city.py'])
-        self.assertEqual(result.total_errors, 0, "FOundcode Style errors (and warnings)")
+        self.assertEqual(result.total_errors, 0,
+                         "FOundcode Style errors (and warnings)")
+
 
 class test_inherit_basemodel(unittest.TestCase):
     """Test if user inherit from baseModel"""
@@ -44,6 +46,7 @@ class test_inherit_basemodel(unittest.TestCase):
         self.assertTrue(issubclass(type(user), BaseModel))
         self.assertEqual(str(type(user)), "<class 'models.city.City'>")
 
+
 class TestAmenity(unittest.TestCase):
     """Test the Amenity class"""
 
@@ -51,11 +54,11 @@ class TestAmenity(unittest.TestCase):
         """Test that Amenity is a subclass of BaseModel"""
         city = City()
         self.assertIsInstance(city, BaseModel)
-        self.assertTrue(hasattr(city,"id"))
+        self.assertTrue(hasattr(city, "id"))
         self.assertTrue(hasattr(city, "created_at"))
         self.assertTrue(hasattr(city, "updated_at"))
-    def test_to_dict_creates_dict(self):
 
+    def test_to_dict_creates_dict(self):
         """Test to_dict method creates a dictionary with proper attrs"""
         ci = City()
         print(ci.__dict__)
@@ -77,8 +80,9 @@ class TestAmenity(unittest.TestCase):
     def test_str(self):
         """test that the str method has the correct output"""
         city = City()
-        string="[City] ({}) {}".format(city.id, city.__dict__)
+        string = "[City] ({}) {}".format(city.id, city.__dict__)
         self.assertEqual(string, str(city))
+
 
 if __name__ == "__main__":
     unittest.main()

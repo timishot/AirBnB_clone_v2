@@ -25,7 +25,7 @@ class test_basemodel(unittest.TestCase):
     def tearDown(self):
         try:
             os.remove('file.json')
-        except:
+        except FileNotFoundError:
             pass
 
     def test_default(self):
@@ -108,17 +108,18 @@ class test_basemodel(unittest.TestCase):
         instance3 = BaseModel()
         list_instances = [instance1, instance2, instance3]
         for instance in list_instances:
-            ins_uuid =instance.id
+            ins_uuid = instance.id
             with self.subTest(uuid=ins_uuid):
                 self.assertIs(type(ins_uuid), str)
         self.assertNotEqual(instance1.id, instance2.id)
         self.assertNotEqual(instance1.id, instance3.id)
-        self.assertNotEqual(instance2.id, instance3.id )
+        self.assertNotEqual(instance2.id, instance3.id)
 
     def test_str_method(self):
         """Testing returns STR method"""
         instance6 = BaseModel()
-        string_output = "[BaseModel] ({}) {}".format(instance6.id, instance6.__dict__)
+        string_output = "[BaseModel] ({}) {}\
+            ".format(instance6.id, instance6.__dict__)
         self.assertEqual(string_output, str(instance6))
 
 
@@ -129,7 +130,8 @@ class TestCodeFormat(unittest.TestCase):
     def test_pycodestyle(self):
         pycostyle = pycodestyle.StyleGuide(quiet=True)
         result = pycostyle.check_files(['models/base_model.py'])
-        self.assertEqual(result.total_errors, 0, "Found code style errors (and warnings).")
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warnings).")
 
 
 class TestBaseModel(unittest.TestCase):
@@ -151,9 +153,9 @@ class TestBaseModel(unittest.TestCase):
         """tearDown"""
         try:
             os.remove("file.json")
-        except:
+        except FileNotFoundError:
             pass
-    
+
     def test_pep_BaseModel(self):
         """Testing for pep8"""
         style = pycodestyle.StyleGuide(quiet=True)

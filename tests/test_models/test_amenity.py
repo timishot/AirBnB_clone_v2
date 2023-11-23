@@ -28,9 +28,10 @@ class Test_PEP8(unittest.TestCase):
     """test User"""
     def test_pep8_user(self):
         """test pep8 user"""
-        pep8style= pycodestyle.StyleGuide(quiet=True)
+        pep8style = pycodestyle.StyleGuide(quiet=True)
         result = pep8style.check_files(['models/amenity.py'])
-        self.assertEqual(result.total_errors, 0, "Foundcode style errors(and warnings)")
+        self.assertEqual(result.total_errors, 0,
+                         "Foundcode style errors(and warnings)")
 
 
 class test_inherit_basemodel(unittest.TestCase):
@@ -42,6 +43,7 @@ class test_inherit_basemodel(unittest.TestCase):
         self.assertTrue(issubclass(type(user), BaseModel))
         self.assertEqual(str(type(user)), "<class 'models.amenity.Amenity'>")
 
+
 class test_Amenity_BaseModel(unittest.TestCase):
     def test_str_method(self):
         """
@@ -51,6 +53,7 @@ class test_Amenity_BaseModel(unittest.TestCase):
         str_output = "[Amenity] ({}) {}".format(inst.id, inst.__dict__)
         self.assertEqual(str_output, str(inst))
 
+
 class TestAmenity(unittest.TestCase):
     """Test the Amenity class"""
 
@@ -58,7 +61,7 @@ class TestAmenity(unittest.TestCase):
         """Test that Amenity is a subclass of BaseModel"""
         amenity = Amenity()
         self.assertIsInstance(amenity, BaseModel)
-        self.assertTrue(hasattr(amenity,"id"))
+        self.assertTrue(hasattr(amenity, "id"))
         self.assertTrue(hasattr(amenity, "created_at"))
         self.assertTrue(hasattr(amenity, "updated_at"))
 
