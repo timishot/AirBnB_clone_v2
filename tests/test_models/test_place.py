@@ -2,6 +2,9 @@
 """ """
 from tests.test_models.test_base_model import test_basemodel
 from models.place import Place
+import pycodestyle
+import unittest
+from models.base_model import BaseModel
 
 
 class test_Place(test_basemodel):
@@ -67,3 +70,21 @@ class test_Place(test_basemodel):
         """ """
         new = self.value()
         self.assertEqual(type(new.amenity_ids), list)
+
+class Test_PEP8(unittest.TestCase):
+    """test place"""
+    def test_pep8_user(self):
+        """test pep8 user"""
+        pep8style= pycodestyle.StyleGuide(quiet=True)
+        result = pep8style.check_files(['models/place.py'])
+        self.assertEqual(result.total_errors, 0, "Foundcode style errors(and warnings)")
+
+
+class test_inherit_basemodel(unittest.TestCase):
+    """Test if user inherit from BaseModel"""
+    def test_instance(self):
+        """Checkif user is an instance of BaseModel"""
+        user = Place()
+        self.assertIsInstance(user, Place)
+        self.assertTrue(issubclass(type(user), BaseModel))
+        self.assertEqual(str(type(user)), "<class 'models.place.Place'>")
