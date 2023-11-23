@@ -118,8 +118,8 @@ class test_basemodel(unittest.TestCase):
     def test_str_method(self):
         """Testing returns STR method"""
         instance6 = BaseModel()
-        string_output = "[BaseModel] ({}) {}\
-            ".format(instance6.id, instance6.__dict__)
+        string_output = \
+            "[BaseModel] ({}) {}".format(instance6.id, instance6.__dict__)
         self.assertEqual(string_output, str(instance6))
 
 
