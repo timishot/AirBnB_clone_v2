@@ -120,13 +120,12 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         class_name = line[0]
-
+        
         if class_name not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
         params={}
-        for param in line[2:]:
-            print(line)
+        for param in line[1:]:
             if '=' not in param:
                 print((f"Error: Invalid parameter '{param}'"))
                 return
@@ -146,9 +145,11 @@ class HBNBCommand(cmd.Cmd):
                     print(f"Error Invalid value '{param}'")
                     return
             params[key] = value
-
+        
+        
         #Create an instance with the given parameters
         new_instance =HBNBCommand.classes[class_name](**params)
+        print(new_instance.__class__);
         new_instance.save()
         print(new_instance.id)
 
@@ -232,11 +233,11 @@ class HBNBCommand(cmd.Cmd):
             if args not in HBNBCommand.classes:
                 print("** class doesn't exist **")
                 return
-            for k, v in storage._FileStorage__objects.items():
+            for k, v in storage.all(HBNBCommand.classes[args]).items():
                 if k.split('.')[0] == args:
                     print_list.append(str(v))
         else:
-            for k, v in storage._FileStorage__objects.items():
+            for k, v in storage.all().items():
                 print_list.append(str(v))
 
         print(print_list)
