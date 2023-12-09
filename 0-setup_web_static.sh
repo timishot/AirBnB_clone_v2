@@ -16,15 +16,15 @@ echo " <html>
      <body>
        Holberton School
      <\body>
-</html>" | sudo tee /data/web_static/release/test/index.html > /dev/null
+</html>" | sudo tee /data/web_static/releases/test/index.html > /dev/null
 
 # Create symbolic link
-sudo ln -sf /data/web_static/release/test/ /data/web_static/current
+sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
 
 # Give ownership to the ubuntu user and group
 sudo chown -R ubuntu:ubuntu /data/
 
-config_content = $(cat <<EOF
+config_content=$(cat <<EOF
 server {
     listen 80 default_server;
     listen [::]:80 default_server;
@@ -50,7 +50,7 @@ EOF
 # Check if the alias already exists in the Nginx config
 if ! grep -q "location /hbnb_static/" /etc/nginx/sites-available/default
 then
-	echo "$config_content" | sudo tee /etc/nginx/site-available/default > /dev/null
+	echo "$config_content" | sudo tee /etc/nginx/sitessystemctl status nginx.service-available/default > /dev/null
 fi
 
 #restart ngix
