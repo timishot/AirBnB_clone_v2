@@ -10,7 +10,7 @@ fi
 sudo mkdir -p /data/web_static/releases/test /data/web_static/shared
 
 # Create a fake HTML file
-echo " <html>
+printf " <html>
      <head>
      <\head>
      <body>
