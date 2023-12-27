@@ -6,7 +6,9 @@ from models.user import User
 from models.city import City
 from models.amenity import Amenity
 from models.place import Place
-from models.base_model import BaseModel, Base
+from models.__init__ import storage
+
+
 
 
 # creation of a State
@@ -18,13 +20,13 @@ city = City(state_id=state.id, name="San Francisco")
 city.save()
 
 # creation of a User
-user = User(email="john@snow.com", password="johnpwd")
+user = User(first_name="Timi",last_name="Aden" , email="john@snow.com", password="johnpwd")
 user.save()
 
 # creation of 2 Places
-place_1 = Place(user_id=user.id, city_id=city.id, name="House 1")
+place_1 = Place(user_id=user.id, city_id=city.id, name="House 1" ,description="timi", latitude=3.0, longitude=3.1)
 place_1.save()
-place_2 = Place(user_id=user.id, city_id=city.id, name="House 2")
+place_2 = Place(user_id=user.id, city_id=city.id, name="House 2", description="timi", latitude=3.0, longitude=4.3)
 place_2.save()
 
 # creation of 3 various Amenity
