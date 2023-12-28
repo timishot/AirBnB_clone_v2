@@ -9,6 +9,7 @@ from sqlalchemy import Column, Integer, String, DateTime
 
 Base = declarative_base()
 
+
 class BaseModel:
     """A base class for all hbnb models"""
     id = Column(String(60), unique=True, nullable=False, primary_key=True)
@@ -32,7 +33,6 @@ class BaseModel:
         """Returns a string representation of the instance"""
         d = self.__dict__.copy()
         d.pop("_sa_instance_state", None)
-        # cls = (str(type(self)).split('.')[-1]).split('\'')[0]
         return '[{}] ({}) {}'.format(type(self).__name__, self.id, d)
 
     def save(self):
@@ -53,7 +53,7 @@ class BaseModel:
         if '_sa_instance_state' in dictionary:
             del dictionary['_sa_instance_state']
         return dictionary
-    
+
     def delete(self):
         from models import storage
         models.storage.delete(self)
