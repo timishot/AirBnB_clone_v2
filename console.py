@@ -143,7 +143,6 @@ class HBNBCommand(cmd.Cmd):
             params[key] = value
         """Create an instance with the given parameters"""
         new_instance = HBNBCommand.classes[class_name](**params)
-        print(new_instance.__class__)
         new_instance.save()
         print(new_instance.id)
 
