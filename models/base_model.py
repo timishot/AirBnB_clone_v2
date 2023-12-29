@@ -33,6 +33,7 @@ class BaseModel:
         """Returns a string representation of the instance"""
         d = self.__dict__.copy()
         d.pop("_sa_instance_state", None)
+        d.pop("_sa_instance_state", None)
         return '[{}] ({}) {}'.format(type(self).__name__, self.id, d)
 
     def save(self):
@@ -55,5 +56,4 @@ class BaseModel:
         return dictionary
 
     def delete(self):
-        from models import storage
         models.storage.delete(self)
