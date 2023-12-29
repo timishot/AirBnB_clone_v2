@@ -19,7 +19,7 @@
 DROP DATABASE IF EXISTS hbnb_dev_db;
 
 -- Create database + user if doesn't exist
-CREATE DATABASE IF NOT EXISTS hbnb_dev_db;HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_pwd HBNB_MYSQL_HOST=localhost HBNB_MYSQL_DB=hbnb_dev_db HBNB_TYPE_STORAGE=db python3 -m web_flask.7-states_list
+CREATE DATABASE IF NOT EXISTS hbnb_dev_db;
 CREATE USER IF NOT EXISTS 'hbnb_dev'@'localhost';
 SET PASSWORD FOR 'hbnb_dev'@'localhost' = 'hbnb_dev_pwd';
 GRANT ALL ON hbnb_dev_db.* TO 'hbnb_dev'@'localhost';
